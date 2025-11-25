@@ -1,6 +1,12 @@
 # To-Do Iskaypet
 
-Aplicación web de gestión de tareas construida con Next.js 16, React 19 y TypeScript. La aplicación permite crear, visualizar y eliminar tareas, con un sistema completo de validación de formularios y manejo de errores.
+Challenge enviado por el equipo Iskaypet donde debía realizar un todo-list basado en un figma (https://www.figma.com/design/Z8hlp9KjNiRck368uZX89T/prueba-front?node-id=1-2&t=JVilHOQFGB450uiY-0).
+Algunas cuestiones a tener en cuenta:
+-El figma unicamente tiene desarollado el componente input, al menos no encontre otro o no entendi porque solamente esta el input.
+-El layout que esta en figma unicamente tiene el apartado de vista mobile. Como no hubo especificaciones para la parte web, simplemente lo deje como estaba, no se si fue su intencion que yo me encargue de eso o si fue aproposito para que mantenga la total similaridad con figma.
+-De la misma manera, hay muchas de las tabs que no tienen ningun contenido, por lo que para eso (segun figma) unicamente renderize el label de la tab.
+-El formulario de datos personales yo entendi que no deberia hacer nada, simplemente validar los inputs.
+-Lo mismo me sucedio con la Nav. El carrito en el figma tiene de 2 (items). Para este challenge, como estaba enfocado en el TODO, simplemente replique la nav de figma.
 
 ## Requisitos Previos
 

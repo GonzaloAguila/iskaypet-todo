@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: var(--error-page-bg);
+  text-align: center;
+}
+
+.code {
+  font-size: 8rem;
+  font-weight: 700;
+  color: var(--error-code-color);
+  margin: 0;
+  line-height: 1;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--error-title-color);
+  margin: 1rem 0 0.5rem;
+}
+
+.message {
+  font-size: 1rem;
+  color: var(--error-message-color);
+  margin: 0 0 2rem;
+  max-width: 400px;
+}
+
+.button {
+  margin-top: 1rem;
+}
+

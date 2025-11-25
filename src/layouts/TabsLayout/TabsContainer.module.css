@@ -1,0 +1,8 @@
+.tabsContainer {
+  width: 100%;
+  max-width: 100%;
+  min-height: calc(100vh - 62px - 50px);
+  background-color: var(--tabs-container-bg);
+  overflow-x: hidden;
+}
+

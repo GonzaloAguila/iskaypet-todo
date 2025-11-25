@@ -1,0 +1,21 @@
+.tabContent {
+  width: 100%;
+  padding: 0 1rem;
+  min-height: 100%;
+}
+
+.tabLabel {
+  font-family: var(--font-open-sans), 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  margin: 2rem 0 0.5rem 0;
+  padding: 0;
+}
+
+.tabBody {
+  width: 100%;
+}
+

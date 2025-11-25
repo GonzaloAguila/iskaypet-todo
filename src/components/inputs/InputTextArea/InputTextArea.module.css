@@ -1,0 +1,21 @@
+.textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  font-family: var(--font-open-sans), 'Open Sans', sans-serif;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--input-border-focus);
+}
+
+.textareaError {
+  border-color: var(--input-border-error);
+}
+

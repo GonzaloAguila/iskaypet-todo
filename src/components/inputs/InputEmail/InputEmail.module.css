@@ -1,0 +1,18 @@
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  font-family: var(--font-open-sans), 'Open Sans', sans-serif;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--input-border-focus);
+}
+
+.inputError {
+  border-color: var(--input-border-error);
+}

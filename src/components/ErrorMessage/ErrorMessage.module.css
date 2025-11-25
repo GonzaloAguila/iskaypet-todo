@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.containerInline {
+  flex-direction: row;
+  gap: 0.75rem;
+  padding: 1rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+}
+
+.icon {
+  font-size: 2rem;
+  color: var(--color-error);
+}
+
+.iconInline {
+  font-size: 1.25rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--error-title-color);
+  margin: 0;
+}
+
+.message {
+  font-size: 0.875rem;
+  color: var(--error-message-color);
+  margin: 0;
+}
+
+.retryButton {
+  margin-top: 1rem;
+}

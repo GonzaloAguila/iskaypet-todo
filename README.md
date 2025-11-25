@@ -1,6 +1,6 @@
 # To-Do Iskaypet
 
-Challenge enviado por el equipo Iskaypet donde debía realizar un todo-list basado en un figma (https://www.figma.com/design/Z8hlp9KjNiRck368uZX89T/prueba-front?node-id=1-2&t=JVilHOQFGB450uiY-0).
+Challenge enviado por el equipo Iskaypet donde debía realizar un todo-list basado en un [https://www.figma.com/design/Z8hlp9KjNiRck368uZX89T/prueba-front?node-id=1-2&t=JVilHOQFGB450uiY-0](figma).
 Algunas cuestiones a tener en cuenta:
 
 - El figma unicamente tiene desarollado el componente input, al menos no encontre otro o no entendi porque solamente esta el input.

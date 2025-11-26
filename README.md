@@ -13,10 +13,10 @@ Algunas cuestiones a tener en cuenta:
 
 Tener instalado:
 
-- Node.js 18.0 o superior
-- npm, yarn o algun gestor de paquetes.
+- Node.js 20.0 o superior
+- npm como gestor de paquetes
 
-## Instalación
+## Instalacion
 
 1. Clonar el repositorio:
 ```bash
@@ -29,6 +29,8 @@ cd to-do-iskaypet
 npm install
 ```
 
+Esto tambien configura automaticamente los git hooks de Husky.
+
 ## Scripts Disponibles
 
 ### Desarrollo
@@ -39,7 +41,7 @@ Iniciar el servidor de desarrollo:
 npm run dev
 ```
 
-La aplicación va a estar disponible en [http://localhost:3000](http://localhost:3000)
+La aplicacion va a estar disponible en [http://localhost:3000](http://localhost:3000)
 
 ### Testing
 
@@ -48,10 +50,17 @@ Ejecutar los tests:
 ```bash
 npm test
 ```
+
 Ejecutar los tests en modo watch:
 
 ```bash
 npm run test:watch
+```
+
+Ejecutar los tests con cobertura:
+
+```bash
+npm run test:coverage
 ```
 
 ### Linting
@@ -62,54 +71,110 @@ Ejecutar el linter:
 npm run lint
 ```
 
+### Build
+
+Generar build de produccion:
+
+```bash
+npm run build
+```
+
+## Git Hooks (Husky)
+
+El proyecto utiliza Husky para ejecutar validaciones automaticas antes de cada push (podria ser para cada commit tambien, pero como es un agregado propio me parecio correcto de esta manera):
+
+1. **Linter**: Verifica que no haya errores ni warnings de ESLint
+2. **Tests**: Ejecuta todos los tests y verifica que pasen
+3. **Build**: Compila el proyecto para asegurar que no haya errores
+
+Si alguna validacion falla, el push se cancela automaticamente.
+
+Los hooks se instalan automaticamente al ejecutar `npm install`.
+
 ## Estructura del Proyecto
 
 ```
 src/
-├── app/                   # Rutas y páginas de Next.js App Router
-│   ├── [tab]/             # Rutas dinámicas para tabs
-│   ├── error.tsx          # Error boundary client side.
+├── app/                   # Rutas y paginas de Next.js App Router
+│   ├── [tab]/             # Rutas dinamicas para tabs
+│   ├── error.tsx          # Error boundary client side
 │   ├── global-error.tsx   # Error boundary global
-│   ├── not-found.tsx      # Página 404
+│   ├── not-found.tsx      # Pagina 404
 │   └── globals.css        # Variables CSS globales
-├── components/            # Componentes reutilizables y en su mayoria, atomicos.
+├── components/            # Componentes reutilizables y atomicos
 │   ├── Button/
 │   ├── Card/
 │   ├── ErrorMessage/
 │   ├── inputs/
+│   │   ├── InputEmail/
+│   │   ├── InputPhone/
+│   │   ├── InputSelect/   
+│   │   ├── InputText/
+│   │   ├── InputTextArea/
+│   │   └── InputWrapper/
 │   ├── Modal/
-│   ├── Nav/
 │   └── TabBar/
 ├── hooks/                 # Custom hooks
-│   ├── useBodyScrollLock/
-│   ├── useEscapeKey/
-│   ├── useModal/
-│   └── useTasks/
+│   ├── useBodyScrollLock/ # Bloquea scroll del body
+│   ├── useEscapeKey/      # Detecta tecla Escape
+│   ├── useModal/          # Manejo de estado de modales
+│   ├── usePagination/     # Logica de paginacion
+│   └── useTasks/          # CRUD de tareas con SWR
 ├── layouts/               # Layouts
 │   └── TabsLayout/
-├── modules/               # Módulos (componentes mas complejos)
+├── modules/               # Modulos (componentes mas complejos)
 │   ├── forms/
+│   │   ├── MyDataForm/
+│   │   └── TaskForm/
 │   ├── modals/
+│   │   └── CreateTaskModal/
+│   ├── Nav/
+│   ├── Paginator/         # Componente de paginacion
 │   └── Task/
-├── services/              # Servicios que intearctuan con la API
+├── services/              # Servicios que interactuan con la API
 │   └── taskService/
-└── utils/                 # Utilidades, de todo un poco.
+└── utils/                 # Utilidades
     ├── errors/
     ├── applyFilters.ts
-    └── paginate.ts
+    ├── paginate.ts
+    └── regex.ts
 ```
 
-## Tecnologías Utilizadas
+## Tecnologias Utilizadas
 
 - **Next.js 16**: Framework React con App Router
 - **React 19**: Biblioteca de UI
-- **TypeScript**: Tipado estático
+- **TypeScript**: Tipado estatico
 - **React Hook Form**: Manejo de formularios
-- **Joi**: Validación de esquemas
+- **Joi**: Validacion de esquemas
 - **SWR**: Data fetching y caching
 - **Jest**: Framework de testing
 - **React Testing Library**: Testing de componentes
 - **CSS Modules**: Estilos modulares
+- **Husky**: Git hooks para validaciones pre-push
+
+## Paginacion
+
+El listado de tareas incluye paginacion configurable:
+
+- **Limite inicial**: 3 tareas por pagina
+- **Opciones disponibles**: 3, 5, 10 tareas por pagina
+- **Navegacion**: Botones anterior/siguiente y numeros de pagina
+- **Responsive**: Layout adaptado para movil y desktop
+
+La logica de paginacion esta encapsulada en el hook `usePagination` y el componente `Paginator`.
+
+## CI/CD
+
+El proyecto incluye un workflow de GitHub Actions (`.github/workflows/ci.yml`) que ejecuta:
+
+1. Linting con ESLint
+2. Tests con Jest
+3. Build de produccion
+
+Se ejecuta en cada push y pull request a las ramas `main` y `develop`.
+
+## Guias de Desarrollo
 
 ### Agregar una Nueva Tab
 
@@ -120,6 +185,11 @@ src/
 ### Agregar un Nuevo Componente
 
 1. Crear la carpeta del componente en `src/components/`
-2. Crear los archivos: `ComponentName.tsx`, `ComponentName.module.css`, `index.ts`
+2. Crear los archivos: `ComponentName.tsx`, `ComponentName.module.css`, `ComponentName.types.ts`, `index.ts`
 3. Agregar las variables CSS necesarias en `globals.css` si aplica
 
+### Agregar un Nuevo Hook
+
+1. Crear la carpeta del hook en `src/hooks/`
+2. Crear los archivos: `useHookName.ts`, `useHookName.test.ts`
+3. Exportar el hook en `src/hooks/index.ts`

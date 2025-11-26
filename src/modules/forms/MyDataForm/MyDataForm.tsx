@@ -7,10 +7,14 @@ import InputEmail from '../../../components/inputs/InputEmail';
 import InputPhone from '../../../components/inputs/InputPhone';
 import Button from '../../../components/Button';
 import Card from '../../../components/Card';
+import ToastContainer from '@/src/modules/Toast';
+import { useToast } from '@/src/hooks';
 import { myDataFormSchema, type MyDataFormData } from './constants';
 import styles from './MyDataForm.module.css';
 
 export default function MyDataForm() {
+  const { toasts, showInfo, removeToast } = useToast();
+
   const {
     register,
     handleSubmit,
@@ -22,7 +26,7 @@ export default function MyDataForm() {
   });
 
   const onSubmit = () => {
-    //COM no hace nada o al menos no encontre que debe hacer este formulario.
+    showInfo('En desarrollo', 'Esta funcionalidad aun no esta implementada');
   };
 
   return (
@@ -58,6 +62,7 @@ export default function MyDataForm() {
         />
       </form>
     </Card>
+    <ToastContainer toasts={toasts} onClose={removeToast} />
     </div>
   );
 }

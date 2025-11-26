@@ -119,7 +119,8 @@ src/
 │   ├── useEscapeKey/      # Detecta tecla Escape
 │   ├── useModal/          # Manejo de estado de modales
 │   ├── usePagination/     # Logica de paginacion
-│   └── useTasks/          # CRUD de tareas con SWR
+│   ├── useTasks/          # CRUD de tareas con SWR
+│   └── useToast/          # Notificaciones
 ├── layouts/               # Layouts
 │   └── TabsLayout/
 ├── modules/               # Modulos (componentes mas complejos)
@@ -130,7 +131,8 @@ src/
 │   │   └── CreateTaskModal/
 │   ├── Nav/
 │   ├── Paginator/         # Componente de paginacion
-│   └── Task/
+│   ├── Task/
+│   └── Toast/             # Componente de notificaciones
 ├── services/              # Servicios que interactuan con la API
 │   └── taskService/
 └── utils/                 # Utilidades
@@ -163,6 +165,41 @@ El listado de tareas incluye paginacion configurable:
 - **Responsive**: Layout adaptado para movil y desktop
 
 La logica de paginacion esta encapsulada en el hook `usePagination` y el componente `Paginator`.
+
+## Notificaciones (Toast)
+
+El proyecto incluye un sistema de notificaciones toast con el hook `useToast`:
+
+```typescript
+const { toasts, showSuccess, showError, showWarning, showInfo, removeToast } = useToast();
+
+// Con titulo y mensaje
+showSuccess('Tarea creada', 'La tarea fue agregada correctamente');
+showError('Error', 'No se pudo eliminar la tarea');
+showWarning('Atencion', 'La sesion esta por expirar');
+showInfo('En desarrollo', 'Esta funcionalidad aun no esta implementada');
+
+// Solo con titulo
+showSuccess('Guardado correctamente');
+showError('Error al procesar');
+
+// Renderizar el contenedor de toasts
+<ToastContainer toasts={toasts} onClose={removeToast} />
+```
+
+Tipos de notificaciones:
+- **success**: Verde, para acciones exitosas
+- **error**: Rojo, para errores
+- **warning**: Amarillo, para advertencias
+- **info**: Azul, para informacion general
+
+Caracteristicas:
+- Titulo en negrita (font-weight: 600)
+- Mensaje opcional debajo del titulo
+- Auto-eliminacion despues de 3 segundos por defecto
+- Boton para cerrar manualmente
+- Animacion de entrada desde la derecha
+- Posicionado en la esquina inferior derecha
 
 ## CI/CD
 

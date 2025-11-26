@@ -1,0 +1,117 @@
+.container {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 100%;
+  width: 320px;
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease-out;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.message {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+.success {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.success .closeButton {
+  color: #ffffff;
+}
+
+.error {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.error .closeButton {
+  color: #ffffff;
+}
+
+.warning {
+  background-color: #f59e0b;
+  color: #ffffff;
+}
+
+.warning .closeButton {
+  color: #ffffff;
+}
+
+.info {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.info .closeButton {
+  color: #ffffff;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+  }
+}
+

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import styles from './_error/error.module.css';
+import styles from './error.module.css';
 import Button from '../components/Button';
 
 interface ErrorProps {

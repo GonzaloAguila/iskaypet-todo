@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
-import { useEffect, useImperativeHandle, forwardRef } from 'react';
+import { useEffect, useImperativeHandle, forwardRef, useCallback } from 'react';
 import InputText from '../../../components/inputs/InputText';
 import InputTextArea from '../../../components/inputs/InputTextArea';
 import { taskFormSchema, type TaskFormData } from './constants';
@@ -35,9 +35,9 @@ const TaskForm = forwardRef<TaskFormHandle, TaskFormProps>(
       onValidationChange?.(isValid);
     }, [isValid, onValidationChange]);
 
-    const handleFormSubmit = (data: TaskFormData) => {
+    const handleFormSubmit = useCallback((data: TaskFormData) => {
       onSubmit(data);
-    };
+    }, [onSubmit]);
 
     useImperativeHandle(ref, () => ({
       submit: () => handleSubmit(handleFormSubmit)(),

@@ -21,7 +21,7 @@ export default function MyDataForm() {
     shouldFocusError: true,
   });
 
-  const onSubmit = (data: MyDataFormData) => {
+  const onSubmit = () => {
     //COM no hace nada o al menos no encontre que debe hacer este formulario.
   };
 

@@ -93,7 +93,7 @@ export default function Paginator({
 
       <div className={styles.pageInfo}>
         <span className={styles.totalInfo}>
-          {total} {total === 1 ? 'elemento' : 'elementos'}
+         Total: {total} {total === 1 ? 'elemento' : 'elementos'}
         </span>
       </div>
 
